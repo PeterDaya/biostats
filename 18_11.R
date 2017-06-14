@@ -1,22 +1,25 @@
-#Chapter 18, question 11.
-
-
-
-
-
 setwd("~/Desktop/NYU/Biostatistics/week_12") #Sets the working directory.
 fishdata <- read.csv("18q11ExploitedLarvalFish.csv") #The data is read into R.
 fishdata 
 attach(fishdata)
-anova(lm(cv~age+exploited)) #This is the ANOVA, which takes coefficient as a function of age and exploitation.
+anova(lm(cv~age+exploited)) 
+
+#This is the ANOVA, which takes coefficient as a function of age and exploitation.
 #The ANOVA table is shown at the bottom of the code.
-yesexploited <- fishdata[exploited=="yes",] #These next two commands seperates the data points by whether or not the species are exploited.
+
+yesexploited <- fishdata[exploited=="yes",] 
+#These next two commands seperates the data points by whether or not the species are exploited.
+
 notexploited <-fishdata[exploited=="no",]
-lm.exploited <- lm(cv~age, data=yesexploited) #These next two commands generates the regression lines for both data points.
+lm.exploited <- lm(cv~age, data=yesexploited) 
+
+#These next two commands generates the regression lines for both data points.
 lm.notexploited <- lm(cv~age, data=notexploited)
 plot(age, cv, pch=as.numeric(exploited), xlab="Age of Maturation (years)", ylab="Coefficent of Variation") #This command plots the data.
 abline(lm.exploited) #The next two commands add the regression line to the plot from the last command.
 abline(lm.notexploited)
+
+
 
 #Analysis of Variance Table
 
